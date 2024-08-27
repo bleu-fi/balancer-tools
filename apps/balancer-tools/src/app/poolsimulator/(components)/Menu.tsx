@@ -26,7 +26,7 @@ const POOL_TYPES_MAPPER = {
     name: "Meta Stable",
     defaultParams: {
       swapFee: 0.01,
-      amp: 5,
+      ampFactor: 5,
     },
   },
   GyroE: {

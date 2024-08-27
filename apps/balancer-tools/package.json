@@ -9,7 +9,6 @@
     "build:prepare": "pnpm npm-run-all -l --parallel 'build:prepare:gql'",
     "dev": "pnpm npm-run-all -l --parallel dev:**",
     "dev:next": "next dev",
-    "dev:get-pools": "pnpm --filter=\"@bleu/balancer-apr\" build",
     "start": "next start",
     "wagmi": "wagmi generate",
     "wagmi:watch": "wagmi generate --watch",

@@ -1,5 +1,8 @@
 import { capitalize, Network } from "@bleu/utils";
 import { CodegenConfig } from "@graphql-codegen/cli";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export enum Subgraph {
   BalancerPoolsMetadata = "balancer-pools-metadata",
@@ -20,48 +23,54 @@ export enum Subgraph {
 // https://linear.app/bleu-llc/issue/BAL-290/deploy-subgraph-with-token-relation-on-other-networks
 
 export const SUBGRAPHS = {
-  [Subgraph.BalancerPoolsMetadata]: {
-    name: Subgraph.BalancerPoolsMetadata,
-    endpoints() {
-      const baseEndpoint =
-        "https://api.thegraph.com/subgraphs/name/bleu-studio";
+  // [Subgraph.BalancerPoolsMetadata]: {
+  //   name: Subgraph.BalancerPoolsMetadata,
+  //   endpoints() {
+  //     const baseEndpoint =
+  //       "https://api.thegraph.com/subgraphs/name/bleu-studio";
 
-      return {
-        [Network.Ethereum]: `${baseEndpoint}/balancer-pool-metadata`,
-        [Network.Goerli]: `${baseEndpoint}/bal-pools-metadata-goerli`,
-        [Network.Polygon]: `${baseEndpoint}/balancer-pools-metadata-matic`,
-        [Network.Arbitrum]: `${baseEndpoint}/bal-pools-metadata-arb`,
-        [Network.Gnosis]: `${baseEndpoint}/balancer-pools-metadata-gnosis`,
-        [Network.Optimism]: `${baseEndpoint}/balancer-pools-metadata-op`,
-        // TODO: deploy Base, Avalanche and sepolia subgraphs
-        [Network.PolygonZKEVM]: `${baseEndpoint}/balancer-pool-metadata`,
-        [Network.Base]: `${baseEndpoint}/balancer-pool-metadata`,
-        [Network.Sepolia]: `${baseEndpoint}/balancer-pool-metadata`,
-        [Network.Avalanche]: `${baseEndpoint}/balancer-pool-metadata`,
-      };
-    },
-    endpointFor(network: Network) {
-      return this.endpoints()[network];
-    },
-  },
+  //     return {
+  //       [Network.Ethereum]: `${baseEndpoint}/balancer-pool-metadata`,
+  //       [Network.Goerli]: `${baseEndpoint}/bal-pools-metadata-goerli`,
+  //       [Network.Polygon]: `${baseEndpoint}/balancer-pools-metadata-matic`,
+  //       [Network.Arbitrum]: `${baseEndpoint}/bal-pools-metadata-arb`,
+  //       [Network.Gnosis]: `${baseEndpoint}/balancer-pools-metadata-gnosis`,
+  //       [Network.Optimism]: `${baseEndpoint}/balancer-pools-metadata-op`,
+  //       // TODO: deploy Base, Avalanche and sepolia subgraphs
+  //       [Network.PolygonZKEVM]: `${baseEndpoint}/balancer-pool-metadata`,
+  //       [Network.Base]: `${baseEndpoint}/balancer-pool-metadata`,
+  //       [Network.Sepolia]: `${baseEndpoint}/balancer-pool-metadata`,
+  //       [Network.Avalanche]: `${baseEndpoint}/balancer-pool-metadata`,
+  //     };
+  //   },
+  //   endpointFor(network: Network) {
+  //     return this.endpoints()[network];
+  //   },
+  // },
   [Subgraph.BalancerGauges]: {
     name: Subgraph.BalancerGauges,
     endpoints() {
-      const baseEndpoint =
-        "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gauges";
-
       return {
-        [Network.Ethereum]: `${baseEndpoint}`,
-        // TODO: substitute Sepolia
-        [Network.Sepolia]: `${baseEndpoint}-goerli`,
-        [Network.Goerli]: `${baseEndpoint}-goerli`,
-        [Network.Polygon]: `${baseEndpoint}-polygon`,
-        [Network.PolygonZKEVM]: `https://api.studio.thegraph.com/query/24660/balancer-gauges-polygon-zk/version/latest`,
-        [Network.Arbitrum]: `${baseEndpoint}-arbitrum`,
-        [Network.Gnosis]: `${baseEndpoint}-gnosis-chain`,
-        [Network.Optimism]: `${baseEndpoint}-optimism`,
-        [Network.Base]: `https://api.studio.thegraph.com/query/24660/balancer-gauges-base/version/latest`,
-        [Network.Avalanche]: `${baseEndpoint}-avalanche`,
+        [Network.Ethereum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges/version/latest",
+        [Network.Sepolia]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-sepolia/version/latest",
+        [Network.Goerli]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-sepolia/version/latest",
+        [Network.Polygon]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-polygon/version/latest",
+        [Network.PolygonZKEVM]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-polygon-zk/version/latest",
+        [Network.Arbitrum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-arbitrum/version/latest",
+        [Network.Gnosis]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-gnosis-chain/version/latest",
+        [Network.Optimism]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-optimism/version/latest",
+        [Network.Base]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-base/version/latest",
+        [Network.Avalanche]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-avalanche/version/latest",
       };
     },
     endpointFor(network: Network) {
@@ -71,21 +80,27 @@ export const SUBGRAPHS = {
   [Subgraph.Balancer]: {
     name: Subgraph.Balancer,
     endpoints() {
-      const baseEndpoint =
-        "https://api.thegraph.com/subgraphs/name/balancer-labs";
-
       return {
-        [Network.Ethereum]: `${baseEndpoint}/balancer-v2`,
-        [Network.Sepolia]: `https://api.studio.thegraph.com/query/24660/balancer-sepolia-v2/version/latest`,
-        [Network.Goerli]: `${baseEndpoint}/balancer-goerli-v2`,
-        [Network.Polygon]: `${baseEndpoint}/balancer-polygon-v2`,
-        [Network.PolygonZKEVM]: `https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest`,
-        [Network.Arbitrum]: `${baseEndpoint}/balancer-arbitrum-v2`,
-        [Network.Gnosis]: `${baseEndpoint}/balancer-gnosis-chain-v2`,
-        [Network.Optimism]: `${baseEndpoint}/balancer-optimism-v2`,
+        [Network.Ethereum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-v2/version/latest",
+        [Network.Sepolia]:
+          "https://api.studio.thegraph.com/query/24660/balancer-sepolia-v2/version/latest",
+        [Network.Goerli]:
+          "https://api.studio.thegraph.com/query/24660/balancer-sepolia-v2/version/latest",
+        [Network.Polygon]:
+          "https://api.studio.thegraph.com/query/75376/balancer-polygon-v2/version/latest",
+        [Network.PolygonZKEVM]:
+          "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
+        [Network.Arbitrum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-arbitrum-v2/version/latest",
+        [Network.Gnosis]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gnosis-chain-v2/version/latest",
+        [Network.Optimism]:
+          "https://api.studio.thegraph.com/query/75376/balancer-optimism-v2/version/latest",
         [Network.Base]:
           "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
-        [Network.Avalanche]: `${baseEndpoint}/balancer-avalanche-v2`,
+        [Network.Avalanche]:
+          "https://api.studio.thegraph.com/query/75376/balancer-avalanche-v2/version/latest",
       };
     },
     endpointFor(network: Network) {
@@ -117,8 +132,7 @@ export const SUBGRAPHS = {
   [Subgraph.UniswapV2]: {
     name: Subgraph.UniswapV2,
     endpoints() {
-      const baseEndpoint =
-        "https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev";
+      const baseEndpoint = `https://gateway.thegraph.com/api/${process.env.THE_GRAPH_API_KEY}/subgraphs/id/EYCKATKGBKLWvSfwvBjzfCBmGwYNdVkduYXVivCsLRFu`;
       return {
         [Network.Ethereum]: `${baseEndpoint}`,
       };
@@ -135,10 +149,9 @@ export const SUBGRAPHS = {
   [Subgraph.Sushi]: {
     name: Subgraph.Sushi,
     endpoints() {
-      const baseEndpoint = "https://api.thegraph.com/subgraphs/name/sushiswap";
       return {
-        [Network.Ethereum]: `${baseEndpoint}/exchange`,
-        [Network.Gnosis]: `${baseEndpoint}/xdai-exchange`,
+        [Network.Ethereum]: `https://gateway.thegraph.com/api/${process.env.THE_GRAPH_API_KEY}/subgraphs/id/A4JrrMwrEXsYNAiYw7rWwbHhQZdj6YZg1uVy5wa6g821`,
+        [Network.Gnosis]: `https://gateway.thegraph.com/api/${process.env.THE_GRAPH_API_KEY}/subgraphs/id/A4JrrMwrEXsYNAiYw7rWwbHhQZdj6YZg1uVy5wa6g821`,
       };
     },
     endpointFor(network: Network) {
