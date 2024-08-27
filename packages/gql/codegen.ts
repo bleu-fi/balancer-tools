@@ -71,21 +71,27 @@ export const SUBGRAPHS = {
   [Subgraph.Balancer]: {
     name: Subgraph.Balancer,
     endpoints() {
-      const baseEndpoint =
-        "https://api.thegraph.com/subgraphs/name/balancer-labs";
-
       return {
-        [Network.Ethereum]: `${baseEndpoint}/balancer-v2`,
-        [Network.Sepolia]: `https://api.studio.thegraph.com/query/24660/balancer-sepolia-v2/version/latest`,
-        [Network.Goerli]: `${baseEndpoint}/balancer-goerli-v2`,
-        [Network.Polygon]: `${baseEndpoint}/balancer-polygon-v2`,
-        [Network.PolygonZKEVM]: `https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest`,
-        [Network.Arbitrum]: `${baseEndpoint}/balancer-arbitrum-v2`,
-        [Network.Gnosis]: `${baseEndpoint}/balancer-gnosis-chain-v2`,
-        [Network.Optimism]: `${baseEndpoint}/balancer-optimism-v2`,
+        [Network.Ethereum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-v2/version/latest",
+        [Network.Sepolia]:
+          "https://api.studio.thegraph.com/query/24660/balancer-sepolia-v2/version/latest",
+        [Network.Goerli]:
+          "https://api.studio.thegraph.com/query/75376/balancer-v2/version/latest",
+        [Network.Polygon]:
+          "https://api.studio.thegraph.com/query/75376/balancer-polygon-v2/version/latest",
+        [Network.PolygonZKEVM]:
+          "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
+        [Network.Arbitrum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-arbitrum-v2/version/latest",
+        [Network.Gnosis]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gnosis-chain-v2/version/latest",
+        [Network.Optimism]:
+          "https://api.studio.thegraph.com/query/75376/balancer-optimism-v2/version/latest",
         [Network.Base]:
           "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
-        [Network.Avalanche]: `${baseEndpoint}/balancer-avalanche-v2`,
+        [Network.Avalanche]:
+          "https://api.studio.thegraph.com/query/75376/balancer-avalanche-v2/version/latest",
       };
     },
     endpointFor(network: Network) {
