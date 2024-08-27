@@ -299,7 +299,7 @@ export const PoolParamsForm = forwardRef<unknown, PoolParamsFormProps>(
         onSubmit={(data) => onSubmit(createPayload(poolType, data))}
         id="initial-data-form"
       >
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 px-6">
           {inputMapper[poolType].map((input) => {
             const defaultValue = input.transformFromDataToForm(
               data.poolParams?.[input.name],
