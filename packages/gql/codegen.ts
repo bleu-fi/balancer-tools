@@ -1,6 +1,6 @@
 import { capitalize, Network } from "@bleu/utils";
 import { CodegenConfig } from "@graphql-codegen/cli";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -50,18 +50,27 @@ export const SUBGRAPHS = {
   [Subgraph.BalancerGauges]: {
     name: Subgraph.BalancerGauges,
     endpoints() {
-
       return {
-        [Network.Ethereum]: "https://api.studio.thegraph.com/query/75376/balancer-gauges/version/latest",
-        [Network.Sepolia]: "https://api.studio.thegraph.com/query/24660/balancer-gauges-sepolia/version/latest",
-        [Network.Goerli]: "https://api.studio.thegraph.com/query/24660/balancer-gauges-sepolia/version/latest",
-        [Network.Polygon]: "https://api.studio.thegraph.com/query/75376/balancer-gauges-polygon/version/latest",
-        [Network.PolygonZKEVM]:"https://api.studio.thegraph.com/query/24660/balancer-gauges-polygon-zk/version/latest" ,
-        [Network.Arbitrum]: "https://api.studio.thegraph.com/query/75376/balancer-gauges-arbitrum/version/latest",
-        [Network.Gnosis]: "https://api.studio.thegraph.com/query/75376/balancer-gauges-gnosis-chain/version/latest",
-        [Network.Optimism]: "https://api.studio.thegraph.com/query/75376/balancer-gauges-optimism/version/latest",
-        [Network.Base]: "https://api.studio.thegraph.com/query/24660/balancer-gauges-base/version/latest",
-        [Network.Avalanche]: "https://api.studio.thegraph.com/query/75376/balancer-gauges-avalanche/version/latest",
+        [Network.Ethereum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges/version/latest",
+        [Network.Sepolia]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-sepolia/version/latest",
+        [Network.Goerli]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-sepolia/version/latest",
+        [Network.Polygon]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-polygon/version/latest",
+        [Network.PolygonZKEVM]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-polygon-zk/version/latest",
+        [Network.Arbitrum]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-arbitrum/version/latest",
+        [Network.Gnosis]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-gnosis-chain/version/latest",
+        [Network.Optimism]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-optimism/version/latest",
+        [Network.Base]:
+          "https://api.studio.thegraph.com/query/24660/balancer-gauges-base/version/latest",
+        [Network.Avalanche]:
+          "https://api.studio.thegraph.com/query/75376/balancer-gauges-avalanche/version/latest",
       };
     },
     endpointFor(network: Network) {
@@ -123,8 +132,7 @@ export const SUBGRAPHS = {
   [Subgraph.UniswapV2]: {
     name: Subgraph.UniswapV2,
     endpoints() {
-      const baseEndpoint =
-      `https://gateway.thegraph.com/api/${process.env.THE_GRAPH_API_KEY}/subgraphs/id/EYCKATKGBKLWvSfwvBjzfCBmGwYNdVkduYXVivCsLRFu`;
+      const baseEndpoint = `https://gateway.thegraph.com/api/${process.env.THE_GRAPH_API_KEY}/subgraphs/id/EYCKATKGBKLWvSfwvBjzfCBmGwYNdVkduYXVivCsLRFu`;
       return {
         [Network.Ethereum]: `${baseEndpoint}`,
       };

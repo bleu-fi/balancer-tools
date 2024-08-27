@@ -21,13 +21,7 @@ export type Scalars = {
   BigInt: { input: any; output: any; }
   Bytes: { input: any; output: any; }
   Int8: { input: any; output: any; }
-  Timestamp: { input: any; output: any; }
 };
-
-export type Aggregation_Interval =
-  | 'day'
-  | 'hour'
-  | '%future added value';
 
 export type BlockChangedFilter = {
   number_gte: Scalars['Int']['input'];
@@ -2984,8 +2978,6 @@ export type _Block_ = {
   hash?: Maybe<Scalars['Bytes']['output']>;
   /** The block number */
   number: Scalars['Int']['output'];
-  /** The hash of the parent block */
-  parentHash?: Maybe<Scalars['Bytes']['output']>;
   /** Integer representation of the timestamp stored in blocks for the chain */
   timestamp?: Maybe<Scalars['Int']['output']>;
 };
