@@ -43,6 +43,7 @@ export type Chain =
   | 'Arbitrum'
   | 'Avalanche'
   | 'Base'
+  | 'Fraxtal'
   | 'Gnosis'
   | 'Optimism'
   | 'Polygon'
